@@ -1,17 +1,17 @@
 import instance from "./index";
 
 const getPets = async () => {
-  const pets = await instance.get("pets");
-  return pets.data;
+  const res = await instance.get("/pets");
+  return res.data;
 };
 
 const getPetById = async (petId) => {
-  const res = await instance.get(`pets/${petId}`);
+  const res = await instance.get(`/pets/${petId}`);
   return res.data;
 };
 
 const addPet = async (name, image, type, adopted) => {
-  const res = await instance.get("pets", {
+  const res = await instance.post("/pets", {
     name: name,
     adopted: adopted,
     image: image,
@@ -21,7 +21,7 @@ const addPet = async (name, image, type, adopted) => {
 };
 
 const updatePet = async (petId, name, image, type) => {
-  const res = await instance.put(`pets/${petId}`, {
+  const res = await instance.put(`/pets/${petId}`, {
     name,
     image,
     type,
@@ -31,7 +31,7 @@ const updatePet = async (petId, name, image, type) => {
 };
 
 const deletePet = async (petId) => {
-  const res = await instance.delete(`pets/${petId}`);
+  const res = await instance.delete(`/pets/${petId}`);
   return res.data;
 };
 
