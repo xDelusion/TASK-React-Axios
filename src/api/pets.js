@@ -2,7 +2,8 @@ import instance from "./index";
 
 const getPets = async () => {
   const res = await instance.get("/pets");
-  return res.data;
+  // return res.data;
+  return res;
 };
 
 const getPetById = async (petId) => {

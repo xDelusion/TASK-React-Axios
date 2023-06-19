@@ -9,24 +9,25 @@ const PetList = () => {
   const [showModal, setShowModal] = useState(false);
 
   // THIS START
-  const [pets, setPets] = useState([]);
-  const callApi = async () => {
-    const res = await getPets();
-    setPets(res);
-  };
+  // const [pets, setPets] = useState([]);
+  // const callApi = async () => {
+  //   const res = await getPets();
+  //   setPets(res);
+  // };
 
-  useEffect(() => {
-    callApi();
-  }, []);
+  // useEffect(() => {
+  //   callApi();
+  // }, []);
+
   // END
   // useQuery here
 
-  query = useQuery({
+  const pets = useQuery({
     queryKey: ["pets"],
     queryFn: getPets,
   });
 
-  const petList = pets
+  const petList = pets.data?.data
     .filter((pet) => pet.name.toLowerCase().includes(query.toLowerCase()))
     .map((pet) => <PetItem pet={pet} key={pet.id} />);
   return (
